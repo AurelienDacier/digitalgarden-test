@@ -1,3 +1,7 @@
 alsa_jobs:
     resource: "@AlsaJobsBundle/Resources/config/routing.yml"
     prefix:   /
+rest:
+    type: rest
+    resource: "@AlsaJobsBundle/Resources/config/routing_rest.yml"
+    prefix: /api/v1

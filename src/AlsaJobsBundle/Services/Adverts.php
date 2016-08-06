@@ -2,7 +2,6 @@
 
 namespace AlsaJobsBundle\Services;
 
-
 use AlsaJobsBundle\Entity\JobAdvert;
 use Vinelab\Rss\Rss;
 
@@ -22,7 +21,9 @@ class Adverts
         $this->url = $url;
     }
 
-    
+    /**
+     * @return mixed
+     */
     public function getData()
     {
         $rss = new Rss();

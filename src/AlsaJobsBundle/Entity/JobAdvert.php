@@ -3,12 +3,15 @@
 namespace AlsaJobsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * JobAdvert
  *
  * @ORM\Table(name="job_advert")
  * @ORM\Entity(repositoryClass="AlsaJobsBundle\Repository\JobAdvertRepository")
+ *
+ * @Serializer\ExclusionPolicy("all")
  */
 class JobAdvert
 {
@@ -25,6 +28,8 @@ class JobAdvert
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     *
+     * @Serializer\Expose
      */
     private $title;
 
@@ -32,6 +37,8 @@ class JobAdvert
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     *
+     * @Serializer\Expose
      */
     private $description;
 
@@ -39,6 +46,7 @@ class JobAdvert
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     *
      */
     private $date;
 
@@ -46,6 +54,8 @@ class JobAdvert
      * @var string
      *
      * @ORM\Column(name="link", type="string", length=255)
+     *
+     * @Serializer\Expose
      */
     private $link;
 
@@ -150,6 +160,19 @@ class JobAdvert
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * Get date as string for rest API
+     *
+     * @Serializer\VirtualProperty
+     */
+    public function getDateAsString()
+    {
+        if ($this->date instanceof \DateTime) {
+            return $this->date->format('Y-m-d');
+        }
+        return null;
     }
 }
 

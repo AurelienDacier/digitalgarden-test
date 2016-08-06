@@ -1,0 +1,3 @@
+api_get_adverts:
+    path:  /adverts
+    defaults: { _controller: "AlsaJobsBundle:Api:getAdverts"}
