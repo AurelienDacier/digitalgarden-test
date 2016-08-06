@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Link
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for advert in adverts %}
+            <tr>
+               <td>
+                   {{ advert.title }}
+                </td>
+                <td>
+                   {{ advert.description }}
+                </td>
+                <td>
+                    <a href="{{ advert.link }}" target="_blank">{{ advert.link }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url('default_update') }}" class="btn btn-default">Update adverts</a>
+{% endblock %}

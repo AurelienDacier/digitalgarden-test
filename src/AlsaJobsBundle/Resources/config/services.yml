@@ -1,0 +1,8 @@
+parameters:
+    rss: "http://emploi.alsacreations.com/offres.xml"
+
+services:
+    alsajobs.adverts:
+        class: AlsaJobsBundle\Services\Adverts
+        arguments:
+            - "%rss%"

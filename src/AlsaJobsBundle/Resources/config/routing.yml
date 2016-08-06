@@ -1,0 +1,7 @@
+default_index:
+    path:   /
+    defaults: { _controller: "AlsaJobsBundle:Default:index" }
+
+default_update:
+    path:   /update
+    defaults: { _controller: "AlsaJobsBundle:Default:updateJobs" }
