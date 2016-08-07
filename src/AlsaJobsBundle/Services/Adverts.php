@@ -3,6 +3,7 @@
 namespace AlsaJobsBundle\Services;
 
 use AlsaJobsBundle\Entity\JobAdvert;
+use Vinelab\Rss\ArticlesCollection;
 use Vinelab\Rss\Rss;
 
 class Adverts
@@ -26,8 +27,12 @@ class Adverts
      */
     public function getData()
     {
-        $rss = new Rss();
-        $items = $rss->feed($this->url);
-        return $items->articles;
+        try {
+            $rss = new Rss();
+            $items = $rss->feed($this->url);
+            return $items->articles;
+        } catch (\Exception $e) {
+            return new ArticlesCollection();
+        }
     }
 }

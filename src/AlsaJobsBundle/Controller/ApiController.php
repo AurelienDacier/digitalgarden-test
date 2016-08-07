@@ -14,8 +14,13 @@ class ApiController extends FOSRestController
      */
     public function getAdvertsAction()
     {
-        // retrieve all adverts first
-        $adverts = $this->getDoctrine()->getRepository(JobAdvert::class)->findAll();
+        try {
+
+            // retrieve all adverts first
+            $adverts = $this->getDoctrine()->getRepository(JobAdvert::class)->findAll();
+        } catch (\Exception $e) {
+            $adverts = [];
+        }
         $view = new View($adverts);
         $view->setTemplate('AlsaJobsBundle:Api:getAdverts.html.twig');
 

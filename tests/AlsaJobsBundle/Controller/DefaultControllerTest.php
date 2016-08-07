@@ -11,7 +11,14 @@ class DefaultControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
+        $this->assertTrue($crawler->filter('html:contains("Update adverts")')->count() > 0);
+    }
 
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+    public function testUpdate()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/update');
+        $client->followRedirect();
     }
 }
