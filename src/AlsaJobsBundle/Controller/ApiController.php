@@ -19,7 +19,7 @@ class ApiController extends FOSRestController
             // retrieve all adverts first
             $adverts = $this->getDoctrine()->getRepository(JobAdvert::class)->findAll();
         } catch (\Exception $e) {
-            $adverts = [];
+            $adverts = json_encode([]);
         }
         $view = new View($adverts);
         $view->setTemplate('AlsaJobsBundle:Api:getAdverts.html.twig');

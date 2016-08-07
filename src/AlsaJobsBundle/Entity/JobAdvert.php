@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
  * JobAdvert
  *
  * @ORM\Table(name="job_advert")
- * @ORM\Entity(repositoryClass="AlsaJobsBundle\Repository\JobAdvertRepository")
+ * @ORM\Entity()
  *
  * @Serializer\ExclusionPolicy("all")
  */
@@ -167,7 +167,7 @@ class JobAdvert
      *
      * @Serializer\VirtualProperty
      */
-    public function getDateAsString()
+    public function getPublicationDate()
     {
         if ($this->date instanceof \DateTime) {
             return $this->date->format('Y-m-d');
