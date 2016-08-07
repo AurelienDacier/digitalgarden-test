@@ -9,6 +9,7 @@ Environment set up:
 - composer install
 
 2nd step: create database
+- Create "data" repository in /app
 - Run: php bin/console doctrine:database:create
 
 3rd step: create table
